@@ -35,11 +35,9 @@ export const protect = (req, res, next) => {
     res.json({ message: "not auth" });
     return;
   }
-  console.log(req.body.username)
-  console.log(`token = ${token} secret = ${process.env.JWT_SECRET}`)
+
   try {
     const user = jwt.verify(token, process.env.JWT_SECRET);
-    console.log("user",user)
     req.user = user;
     next();
   } catch (e) {

@@ -15,6 +15,9 @@ export const createNewUser = async (req,res) =>{
     res.json({token})
 }
 
+/**
+ * Sign in user
+ */
  export const signIn = async (req,res)=>{
     const user = await prisma.user.findUnique({
         where:{
