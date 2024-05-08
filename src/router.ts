@@ -1,22 +1,21 @@
 import { Router } from "express";
 import { body, oneOf } from "express-validator";
 import { handleInputsErrors } from "./modules/middlewares";
+import { createProduct, getProducts } from "./handlers/products";
 const router = Router();
 
 /**
  * Product
  */
 
-router.get("/product", (req, res) => {
-  res.json({ message: "product with nodemon" });
-});
+router.get("/product", getProducts);
 
 router.get("/product/:id", (req, res) => {});
 router.post(
   "/product/",
   body("name").isString(),
   handleInputsErrors,
-  (req, res) => {}
+  createProduct
 );
 router.put(
   "/product/:id",
