@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon src/index.ts"
+    "dev": "nodemon src/index.ts",
+    "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx}\"",
+    "format:check": "prettier --check \"src/**/*.{js,jsx,ts,tsx}\""
   },
   "keywords": [],
   "author": "",
@@ -24,6 +26,7 @@
     "nodemon": "^3.1.0",
     "prisma": "^5.11.0",
     "ts-node": "^10.9.2",
-    "typescript": "^5.4.2"
+    "typescript": "^5.4.2",
+    "prettier": "^2.7.1"
   }
 }
