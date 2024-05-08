@@ -1,7 +1,6 @@
 import jwt from "jsonwebtoken";
 import * as bcrypt from "bcrypt";
 
-
 export const comparePasswords = (password, hash) => {
   return bcrypt.compare(password, hash);
 };
@@ -47,5 +46,3 @@ export const protect = (req, res, next) => {
     return;
   }
 };
-
-
