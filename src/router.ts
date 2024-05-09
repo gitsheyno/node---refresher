@@ -34,8 +34,9 @@ router.get("/update/:id", (req, res) => {});
 
 router.post(
   "/update",
-  body("title").exists(),
-  body("body").exists(),
+  body("title").exists().isString(),
+  body("body").exists().isString(),
+  body("productId").exists().isString(),
   (req, res) => {}
 );
 
