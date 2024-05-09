@@ -1,7 +1,20 @@
 import { Router } from "express";
 import { body, oneOf } from "express-validator";
 import { handleInputsErrors } from "./modules/middlewares";
-import { createProduct, getProducts } from "./handlers/products";
+import {
+  createProduct,
+  deleteProduct,
+  getOneProduct,
+  getProducts,
+  updateProduct,
+} from "./handlers/products";
+import {
+  createUpdate,
+  deleteUpdate,
+  getOneUpdate,
+  getUpdates,
+  updateUpdate,
+} from "./handlers/update";
 const router = Router();
 
 /**
@@ -10,7 +23,7 @@ const router = Router();
 
 router.get("/product", getProducts);
 
-router.get("/product/:id", (req, res) => {});
+router.get("/product/:id", getOneProduct);
 router.post(
   "/product/",
   body("name").isString(),
@@ -21,23 +34,23 @@ router.put(
   "/product/:id",
   body("name").isString(),
   handleInputsErrors,
-  (req, res) => {}
+  updateProduct
 );
-router.delete("/product/:id", (req, res) => {});
+router.delete("/product/:id", deleteProduct);
 
 /**
  * Update
  */
-router.get("/update", (req, res) => {});
+router.get("/update", getOneUpdate);
 
-router.get("/update/:id", (req, res) => {});
+router.get("/update/:id", getUpdates);
 
 router.post(
   "/update",
   body("title").exists().isString(),
   body("body").exists().isString(),
   body("productId").exists().isString(),
-  (req, res) => {}
+  createUpdate
 );
 
 router.put(
@@ -46,10 +59,10 @@ router.put(
   body("body").optional(),
   body("status").isIn(["IN_PROGRESS", "SHIPPED", "DEPRECATED"]).optional(),
   body("version").optional(),
-  (req, res) => {}
+  updateUpdate
 );
 
-router.delete("/update/:id", (req, res) => {});
+router.delete("/update/:id", deleteUpdate);
 
 /**
  * UpdatePoint
